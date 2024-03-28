@@ -48,11 +48,6 @@ namespace UnitBrains.Player
             float minDistance = float.MaxValue;
             Vector2Int nearestTarget = Vector2Int.zero;
 
-            if (result.Count == 0)
-            {
-                return result;
-            }
-
             foreach (var target in result)
             {
                 float currentTargetDistance = DistanceToOwnBase(target);
@@ -65,7 +60,7 @@ namespace UnitBrains.Player
 ;
             }
             result.Clear();
-            result.Add(nearestTarget);
+            if(minDistance < float.MaxValue) result.Add(nearestTarget);
             return result;
             
         }
